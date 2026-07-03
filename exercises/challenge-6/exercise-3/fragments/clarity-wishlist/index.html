@@ -1,0 +1,38 @@
+<!-- Clarity Wishlist Fragment
+     B2B product wishlist with real-time inventory status.
+     SKUs are saved in localStorage; status badges and the Add to Cart
+     button state are driven by index.js using clarity:b2b-utils.
+-->
+<div class="cwl-container">
+
+  <!-- Add SKU to wishlist -->
+  <div class="cwl-add-form">
+    <label class="cwl-label" for="cwl-sku-input">
+      Add product by SKU:
+    </label>
+    <div class="cwl-input-group">
+      <input
+        class="form-control cwl-sku-input"
+        id="cwl-sku-input"
+        type="text"
+        placeholder="e.g. CLARITY-PRX-BLB-001"
+        aria-label="Product SKU"
+      />
+      <button class="btn btn-secondary cwl-add-btn" type="button">
+        Add to Wishlist
+      </button>
+    </div>
+  </div>
+
+  <!-- Wishlist items — populated dynamically by index.js -->
+  <ul class="list-unstyled cwl-list" aria-label="Wishlist"></ul>
+
+  <!--
+    Empty state message — hidden when the list has items.
+    index.js shows/hides this via the .cwl-empty CSS class.
+  -->
+  <p class="cwl-empty" style="display: none;">
+    Your wishlist is empty. Add a product SKU above to get started.
+  </p>
+
+</div>

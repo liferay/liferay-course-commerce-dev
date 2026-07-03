@@ -1,0 +1,12 @@
+server:
+  port: 58081
+
+spring:
+  application:
+    name: clarity-b2b-product-endpoint
+
+liferay:
+  url: ${PORTAL_URL:http://localhost:8080}
+  admin:
+    email: ${LIFERAY_ADMIN_EMAIL_ADDRESS:ian.miller@clarityvisionsolutions.com}
+    password: ${LIFERAY_ADMIN_PASSWORD:learn}

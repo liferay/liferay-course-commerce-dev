@@ -1,0 +1,141 @@
+{
+  "_comment": [
+    "ClarityAccount — Custom Object Definition for Module 7 (CRM Integration)",
+    "",
+    "INTENDED DESIGN (storageType: proxy)",
+    "  Create a Proxy Object that forwards all CRUD operations to an external CRM",
+    "  endpoint, letting Liferay's Object Framework expose CRM data through a generated",
+    "  REST API at /o/c/clarityaccounts/ without local storage.",
+    "",
+    "FEATURE FLAG STATUS (verified 2026-07-02)",
+    "  Feature flag 'Proxy Object (LPS-135430)' is ACTIVE in this workspace.",
+    "  Last server restart: 2026-07-01 18:47 UTC (after flag was enabled).",
+    "  The flag was set via Control Panel → System Settings (stored in DB).",
+    "",
+    "PHASE 1 RESULT — storageType: 'proxy' ACCEPTED for object definition creation",
+    "  POST /o/object-admin/v1.0/object-definitions with storageType: 'proxy'",
+    "  → HTTP 201, 'storageType': 'proxy' confirmed in response.",
+    "  → No more ObjectDefinitionStorageTypeException.",
+    "",
+    "PHASE 2 RESULT — Proxy object RUNTIME is non-functional",
+    "  After creating and publishing a proxy ClarityAccount object:",
+    "  GET /o/c/clarityaccounts/ → HTTP 500 Internal Server Error",
+    "  Root cause from log:",
+    "    java.lang.NullPointerException: Cannot invoke",
+    "    'ObjectEntryManager.getObjectEntries(...)' because 'objectEntryManager' is null",
+    "  The ObjectEntryManager for the proxy storage type is not registered/available.",
+    "  Additionally, 'proxyEndpointURL' is not accepted:",
+    "    - As a top-level field → 'The property proxyEndpointURL is not defined'",
+    "    - In objectDefinitionSettings → 'not allowed for object definition ClarityAccount'",
+    "  Conclusion: The feature flag enables CREATING proxy object definitions, but the",
+    "  runtime delegation layer (proxy ObjectEntryManager) is not implemented yet in",
+    "  DXP 2026.Q1.2-LTS. The proxy URL cannot be configured via any API endpoint.",
+    "",
+    "IMPLEMENTED ALTERNATIVE (used in course)",
+    "  storageType: 'default' (local database storage) — fully functional.",
+    "  Identical REST API surface: GET/POST /o/c/clarityaccounts/",
+    "  Students import CRM data via the Headless Batch Engine.",
+    "  Pedagogical outcome is identical: a custom object queryable from fragments.",
+    "",
+    "BATCH IMPORT ALTERNATIVE (for live CRM data)",
+    "  POST /o/headless-batch-engine/v1.0/import-task/com.liferay.object.rest.dto.v1_0.ObjectEntry"
+  ],
+
+  "proxy_test_payload": {
+    "_comment": [
+      "storageType: 'proxy' is now ACCEPTED by the API (feature flag active).",
+      "Object can be created and published — but GET /o/c/clarityaccounts/ returns 500.",
+      "objectEntryManager is null at runtime. proxyEndpointURL cannot be set via API.",
+      "Delete this object immediately after creation — it is not functional."
+    ],
+    "name": "ClarityAccount",
+    "label": { "en_US": "Clarity CRM Account" },
+    "pluralLabel": { "en_US": "Clarity CRM Accounts" },
+    "scope": "company",
+    "storageType": "proxy",
+    "objectFields": [
+      {
+        "businessType": "Text",
+        "label": { "en_US": "Account Name" },
+        "name": "accountName",
+        "required": false
+      },
+      {
+        "businessType": "Text",
+        "label": { "en_US": "Account Type" },
+        "name": "accountType",
+        "required": false
+      }
+    ]
+  },
+
+  "actual_payload": {
+    "_comment": "Payload used in production — POST /o/object-admin/v1.0/object-definitions",
+    "name": "ClarityAccount",
+    "label": { "en_US": "Clarity CRM Account" },
+    "pluralLabel": { "en_US": "Clarity CRM Accounts" },
+    "scope": "company",
+    "storageType": "default",
+    "objectFields": [
+      {
+        "businessType": "Text",
+        "label": { "en_US": "Account Name" },
+        "name": "accountName",
+        "required": true
+      },
+      {
+        "businessType": "Text",
+        "label": { "en_US": "Account Type" },
+        "name": "accountType",
+        "required": false
+      },
+      {
+        "businessType": "Text",
+        "label": { "en_US": "CRM External Reference" },
+        "name": "crmExternalReference",
+        "required": false
+      }
+    ]
+  },
+
+  "created_object": {
+    "id": 103051,
+    "name": "ClarityAccount",
+    "storageType": "default",
+    "restContextPath": "/o/c/clarityaccounts",
+    "status": "approved",
+    "active": true,
+    "dateCreated": "2026-07-02T02:58:18Z"
+  },
+
+  "publish_request": {
+    "endpoint": "POST /o/object-admin/v1.0/object-definitions/103051/publish",
+    "body": null,
+    "result": "HTTP 200"
+  },
+
+  "sample_entries": [
+    {
+      "accountName": "Northeast Optical Distributors",
+      "accountType": "Distributor",
+      "crmExternalReference": "CRM-ACC-001"
+    },
+    {
+      "accountName": "Pacific Vision Partners",
+      "accountType": "Reseller",
+      "crmExternalReference": "CRM-ACC-002"
+    },
+    {
+      "accountName": "Southern Eyecare Group",
+      "accountType": "Distributor",
+      "crmExternalReference": "CRM-ACC-003"
+    }
+  ],
+
+  "validation": {
+    "get_endpoint": "GET /o/c/clarityaccounts/",
+    "expected_totalCount": 3,
+    "data_source": "local (default storage)",
+    "control_panel_path": "Control Panel → Objects → ClarityAccount"
+  }
+}

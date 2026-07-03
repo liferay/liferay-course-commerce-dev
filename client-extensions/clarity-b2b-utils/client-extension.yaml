@@ -1,0 +1,8 @@
+assemble:
+    - from: assets
+      into: static
+clarity-b2b-utils:
+    bareSpecifier: clarity:b2b-utils
+    name: Clarity B2B Utils
+    type: jsImportMapsEntry
+    url: b2b-utils.js

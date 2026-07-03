@@ -1,0 +1,36 @@
+<!-- Clarity Featured Product Fragment
+     Displays a B2B product card with a Low Stock badge.
+     The badge is hidden by default and shown via index.js when inventory
+     falls below the configured threshold (see LOW_STOCK_THRESHOLD in index.js).
+-->
+<div class="cfp-container">
+
+  <!-- Product image with overlay badge -->
+  <div class="cfp-image-wrapper">
+    <img
+      class="cfp-image"
+      src="https://localhost:8080/o/commerce-media/default/?groupId=54281"
+      alt="Featured Product"
+    />
+
+    <!--
+      Low Stock badge.
+      Hidden by default via CSS (.cfp-badge--low-stock { display: none }).
+      Shown when index.js adds the modifier class .cfp-badge--visible.
+    -->
+    <span class="cfp-badge cfp-badge--low-stock">Low Stock</span>
+  </div>
+
+  <!-- Product details -->
+  <div class="cfp-body">
+    <p class="cfp-name">Loading…</p>
+    <p class="cfp-sku">
+      SKU: <span class="cfp-sku-value">—</span>
+    </p>
+    <p class="cfp-price">—</p>
+    <button class="btn btn-primary cfp-add-to-cart" type="button">
+      Add to Cart
+    </button>
+  </div>
+
+</div>

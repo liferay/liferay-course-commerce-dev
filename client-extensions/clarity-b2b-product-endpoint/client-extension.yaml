@@ -1,0 +1,16 @@
+# Note: oAuthApplicationHeadlessServer is NOT a supported CET type in
+# Liferay DXP 2026.Q1.2-LTS. The OAuth2 application must be registered
+# manually via Control Panel → Security → OAuth 2 Administration.
+#
+# See README.md → "Deploy the OAuth2 Application" for instructions.
+#
+# This file is kept as documentation of the intended integration contract.
+#
+# clarity-b2b-product-endpoint:
+#     .serviceAddress: localhost:58081
+#     .serviceScheme: http
+#     name: Clarity B2B Product Endpoint
+#     scopes:
+#         - Liferay.Headless.Commerce.Admin.Catalog.everything
+#         - Liferay.Headless.Commerce.Delivery.Catalog.everything
+#     type: oAuthApplicationHeadlessServer

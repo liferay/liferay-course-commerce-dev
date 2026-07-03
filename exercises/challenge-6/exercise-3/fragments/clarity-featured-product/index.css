@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Clarity Featured Product — Fragment Styles
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Card container */
+.cfp-container {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    max-width: 320px;
+    overflow: hidden;
+}
+
+/* ── Image ────────────────────────────────────────────────────────────────── */
+
+.cfp-image-wrapper {
+    position: relative;
+}
+
+.cfp-image {
+    display: block;
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* ── Low Stock badge ──────────────────────────────────────────────────────── */
+
+/*
+ * The badge is hidden by default.
+ * index.js adds .cfp-badge--visible when isLowStock() returns true.
+ * Students implement this logic as part of the exercise.
+ */
+.cfp-badge--low-stock {
+    background-color: #f57c00;
+    border-radius: 4px;
+    color: #ffffff;
+    display: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    padding: 4px 10px;
+    position: absolute;
+    right: 10px;
+    text-transform: uppercase;
+    top: 10px;
+}
+
+.cfp-badge--low-stock.cfp-badge--visible {
+    display: inline-block;
+}
+
+/* ── Body ─────────────────────────────────────────────────────────────────── */
+
+.cfp-body {
+    padding: 16px;
+}
+
+.cfp-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.cfp-sku {
+    color: #888888;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.cfp-price {
+    color: #1a1a1a;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.cfp-add-to-cart {
+    width: 100%;
+}

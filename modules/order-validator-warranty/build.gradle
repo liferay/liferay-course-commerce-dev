@@ -1,0 +1,5 @@
+apply plugin: "com.liferay.plugin"
+
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}

@@ -1,0 +1,21 @@
+assemble:
+    -   from: assets
+        into: static
+    -   fromTask: bootJar
+# REPLACE CLIENT EXTENSION NAME HERE:
+    active: # REPLACE HERE
+    checkoutStepLabel: # REPLACE HERE
+    checkoutStepName: # REPLACE HERE
+    checkoutStepOrder: # REPLACE HERE
+    name: # REPLACE HERE
+    oAuth2ApplicationExternalReferenceCode: # REPLACE HERE
+    order: # REPLACE HERE
+    sennaDisabled: # REPLACE HERE
+    showControls: # REPLACE HERE
+    type: # REPLACE HERE
+    visible: # REPLACE HERE
+clarity-b2b-po-step-oauth-application-user-agent:
+    .serviceAddress: localhost:58081
+    .serviceScheme: http
+    name: Clarity B2B PO Upload Checkout Step OAuth Application User Agent
+    type: oAuthApplicationUserAgent

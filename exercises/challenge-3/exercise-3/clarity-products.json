@@ -1,0 +1,372 @@
+[
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "Premium digital blue light blocking lenses designed for screen-intensive work environments. Reduces digital eye strain for professional B2B buyers."
+    },
+    "externalReferenceCode": "CLARITY_PRX_BLUE_LIGHT",
+    "name": { "en_US": "ProRX Digital Blue Light Blocker" },
+    "productType": "simple",
+    "productOptions": [
+      {
+        "key": "clarity-lens-type",
+        "name": { "en_US": "Lens Type" },
+        "fieldType": "select",
+        "optionExternalReferenceCode": "CLARITY_OPT_LENS_TYPE",
+        "optionId": -1,
+        "required": false,
+        "skuContributor": false,
+        "priority": 1.0,
+        "productOptionValues": [
+          { "key": "single-vision", "name": { "en_US": "Single Vision" }, "priority": 1.0, "preselected": true },
+          { "key": "bifocal", "name": { "en_US": "Bifocal" }, "priority": 2.0, "preselected": false },
+          { "key": "progressive", "name": { "en_US": "Progressive" }, "priority": 3.0, "preselected": false }
+        ]
+      },
+      {
+        "key": "clarity-lens-material",
+        "name": { "en_US": "Lens Material" },
+        "fieldType": "select",
+        "optionExternalReferenceCode": "CLARITY_OPT_LENS_MATERIAL",
+        "optionId": -1,
+        "required": false,
+        "skuContributor": false,
+        "priority": 2.0,
+        "productOptionValues": [
+          { "key": "polycarbonate", "name": { "en_US": "Polycarbonate" }, "priority": 1.0, "preselected": true },
+          { "key": "trivex", "name": { "en_US": "Trivex" }, "priority": 2.0, "preselected": false },
+          { "key": "high-index", "name": { "en_US": "High-Index" }, "priority": 3.0, "preselected": false }
+        ]
+      }
+    ],
+    "skus": [
+      {
+        "sku": "CLARITY-PRX-BLB-001",
+        "price": 149.99,
+        "promoPrice": 0.0,
+        "cost": 52.50,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  },
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "Lightweight titanium frames engineered for professionals. Corrosion-resistant, hypoallergenic, ideal for distributor bulk orders."
+    },
+    "externalReferenceCode": "CLARITY_ELITE_TITANIUM_FRAME",
+    "name": { "en_US": "EliteFrame Titanium Business Glasses" },
+    "productType": "simple",
+    "skus": [
+      {
+        "sku": "CLARITY-ELITE-TI-001",
+        "price": 249.99,
+        "promoPrice": 0.0,
+        "cost": 88.00,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  },
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "Self-darkening photochromic lenses that adapt to indoor and outdoor light conditions. High-volume product for distributor catalogs."
+    },
+    "externalReferenceCode": "CLARITY_ULTRA_PHOTOCHROMIC",
+    "name": { "en_US": "ClarityUltra Photochromic Lenses" },
+    "productType": "simple",
+    "productOptions": [
+      {
+        "key": "clarity-lens-type",
+        "name": { "en_US": "Lens Type" },
+        "fieldType": "select",
+        "optionExternalReferenceCode": "CLARITY_OPT_LENS_TYPE",
+        "optionId": -1,
+        "required": false,
+        "skuContributor": false,
+        "priority": 1.0,
+        "productOptionValues": [
+          { "key": "single-vision", "name": { "en_US": "Single Vision" }, "priority": 1.0, "preselected": true },
+          { "key": "bifocal", "name": { "en_US": "Bifocal" }, "priority": 2.0, "preselected": false },
+          { "key": "progressive", "name": { "en_US": "Progressive" }, "priority": 3.0, "preselected": false }
+        ]
+      },
+      {
+        "key": "clarity-lens-material",
+        "name": { "en_US": "Lens Material" },
+        "fieldType": "select",
+        "optionExternalReferenceCode": "CLARITY_OPT_LENS_MATERIAL",
+        "optionId": -1,
+        "required": false,
+        "skuContributor": false,
+        "priority": 2.0,
+        "productOptionValues": [
+          { "key": "polycarbonate", "name": { "en_US": "Polycarbonate" }, "priority": 1.0, "preselected": true },
+          { "key": "trivex", "name": { "en_US": "Trivex" }, "priority": 2.0, "preselected": false },
+          { "key": "high-index", "name": { "en_US": "High-Index" }, "priority": 3.0, "preselected": false }
+        ]
+      }
+    ],
+    "skus": [
+      {
+        "sku": "CLARITY-ULTRA-PHC-001",
+        "price": 179.99,
+        "promoPrice": 0.0,
+        "cost": 63.00,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  },
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "High-performance wraparound sport frames for active professionals. Impact-resistant with flexible TR-90 nylon construction."
+    },
+    "externalReferenceCode": "CLARITY_AEROFLEX_SPORT",
+    "name": { "en_US": "AeroFlex Sports Wraparound Frames" },
+    "productType": "simple",
+    "skus": [
+      {
+        "sku": "CLARITY-AEROFLEX-SP-001",
+        "price": 189.99,
+        "promoPrice": 0.0,
+        "cost": 67.00,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  },
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "Advanced anti-reflective coating lenses that eliminate glare from screens and artificial lighting. Essential for office environments."
+    },
+    "externalReferenceCode": "CLARITY_NANOCOAT_AR",
+    "name": { "en_US": "NanoCoat Anti-Reflective Lenses" },
+    "productType": "simple",
+    "productOptions": [
+      {
+        "key": "clarity-lens-type",
+        "name": { "en_US": "Lens Type" },
+        "fieldType": "select",
+        "optionExternalReferenceCode": "CLARITY_OPT_LENS_TYPE",
+        "optionId": -1,
+        "required": false,
+        "skuContributor": false,
+        "priority": 1.0,
+        "productOptionValues": [
+          { "key": "single-vision", "name": { "en_US": "Single Vision" }, "priority": 1.0, "preselected": true },
+          { "key": "bifocal", "name": { "en_US": "Bifocal" }, "priority": 2.0, "preselected": false },
+          { "key": "progressive", "name": { "en_US": "Progressive" }, "priority": 3.0, "preselected": false }
+        ]
+      },
+      {
+        "key": "clarity-lens-material",
+        "name": { "en_US": "Lens Material" },
+        "fieldType": "select",
+        "optionExternalReferenceCode": "CLARITY_OPT_LENS_MATERIAL",
+        "optionId": -1,
+        "required": false,
+        "skuContributor": false,
+        "priority": 2.0,
+        "productOptionValues": [
+          { "key": "polycarbonate", "name": { "en_US": "Polycarbonate" }, "priority": 1.0, "preselected": true },
+          { "key": "trivex", "name": { "en_US": "Trivex" }, "priority": 2.0, "preselected": false },
+          { "key": "high-index", "name": { "en_US": "High-Index" }, "priority": 3.0, "preselected": false }
+        ]
+      }
+    ],
+    "skus": [
+      {
+        "sku": "CLARITY-NANOCOAT-AR-001",
+        "price": 129.99,
+        "promoPrice": 0.0,
+        "cost": 45.50,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  },
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "Eco-conscious acetate frames made from plant-based materials. Appeals to sustainability-focused B2B buyers in the retail segment."
+    },
+    "externalReferenceCode": "CLARITY_ECOVISION_BAMBOO",
+    "name": { "en_US": "EcoVision Sustainable Frames" },
+    "productType": "simple",
+    "skus": [
+      {
+        "sku": "CLARITY-ECOVISION-001",
+        "price": 199.99,
+        "promoPrice": 0.0,
+        "cost": 71.00,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  },
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "Ultra-high-index progressive lenses delivering exceptional clarity across all focal zones. Premium offering for high-volume distributor accounts."
+    },
+    "externalReferenceCode": "CLARITY_PREMIUMVISION_PROGRESSIVE",
+    "name": { "en_US": "PremiumVision Anti-Fatigue Progressive" },
+    "productType": "simple",
+    "productOptions": [
+      {
+        "key": "clarity-lens-type",
+        "name": { "en_US": "Lens Type" },
+        "fieldType": "select",
+        "optionExternalReferenceCode": "CLARITY_OPT_LENS_TYPE",
+        "optionId": -1,
+        "required": false,
+        "skuContributor": false,
+        "priority": 1.0,
+        "productOptionValues": [
+          { "key": "single-vision", "name": { "en_US": "Single Vision" }, "priority": 1.0, "preselected": false },
+          { "key": "bifocal", "name": { "en_US": "Bifocal" }, "priority": 2.0, "preselected": false },
+          { "key": "progressive", "name": { "en_US": "Progressive" }, "priority": 3.0, "preselected": true }
+        ]
+      },
+      {
+        "key": "clarity-lens-material",
+        "name": { "en_US": "Lens Material" },
+        "fieldType": "select",
+        "optionExternalReferenceCode": "CLARITY_OPT_LENS_MATERIAL",
+        "optionId": -1,
+        "required": false,
+        "skuContributor": false,
+        "priority": 2.0,
+        "productOptionValues": [
+          { "key": "polycarbonate", "name": { "en_US": "Polycarbonate" }, "priority": 1.0, "preselected": false },
+          { "key": "trivex", "name": { "en_US": "Trivex" }, "priority": 2.0, "preselected": false },
+          { "key": "high-index", "name": { "en_US": "High-Index" }, "priority": 3.0, "preselected": true }
+        ]
+      }
+    ],
+    "skus": [
+      {
+        "sku": "CLARITY-PREMVISION-PRG-001",
+        "price": 299.99,
+        "promoPrice": 0.0,
+        "cost": 105.00,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  },
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "Complete professional vision care bundle combining premium titanium frames with anti-reflective lenses. Ready-to-ship package for corporate buyer accounts."
+    },
+    "externalReferenceCode": "CLARITY_VISION_PRO_BUNDLE",
+    "name": { "en_US": "Vision Pro Starter Bundle" },
+    "productType": "grouped",
+    "skus": [
+      {
+        "sku": "CLARITY-VPBUNDLE-001",
+        "price": 379.99,
+        "promoPrice": 0.0,
+        "cost": 133.00,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  },
+  {
+    "active": true,
+    "catalogExternalReferenceCode": "CLARITY_EYEWEAR",
+    "customFields": [
+      {
+        "name": "Wholesale Only",
+        "customValue": { "data": true }
+      }
+    ],
+    "description": {
+      "en_US": "Comprehensive 2-year extended care service plan covering adjustments, cleaning, and minor repairs for any Clarity Vision Solutions frames purchased through the Distributor Portal."
+    },
+    "externalReferenceCode": "CLARITY_EXTENDED_CARE_PLAN",
+    "name": { "en_US": "Extended Vision Care Service Plan" },
+    "productType": "virtual",
+    "productVirtualSettings": {
+      "activationStatus": 0,
+      "duration": 730,
+      "maxUsages": 1,
+      "url": "https://www.clarityvisionsolutions.com/service-plans/extended-care",
+      "termsOfUseRequired": false,
+      "useSample": false
+    },
+    "skus": [
+      {
+        "sku": "CLARITY-EXT-CARE-2YR",
+        "price": 89.99,
+        "promoPrice": 0.0,
+        "cost": 12.00,
+        "published": true,
+        "purchasable": true
+      }
+    ]
+  }
+]
