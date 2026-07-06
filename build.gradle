@@ -1,5 +1,14 @@
 // Check GETTING_STARTED.markdown for information regarding usage.
 
+// Workaround: repository-cdn.liferay.com returns HTTP 500 for the bundle
+// support tool's maven-metadata.xml, breaking "latest.release" resolution.
+// Pin a concrete version so Gradle skips the version-listing request.
+configurations.all {
+    resolutionStrategy {
+        force "com.liferay:com.liferay.portal.tools.bundle.support:3.7.6"
+    }
+}
+
 tasks.named('initBundle').configure {
     doLast {
         def es7Dir = new File("${rootProject.projectDir}/bundles/data/elasticsearch7")
