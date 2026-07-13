@@ -5,7 +5,9 @@ import com.liferay.commerce.product.model.CPDefinition;
 import com.liferay.commerce.product.service.CPDefinitionLocalService;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.template.TemplateContextContributor;
-import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.theme.PortletDisplay;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.WebKeys;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -15,26 +17,36 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 @Component(
-		property = "type=" + TemplateContextContributor.TYPE_GLOBAL,
-		service = TemplateContextContributor.class
+	property = "type=" + TemplateContextContributor.TYPE_GLOBAL,
+	service = TemplateContextContributor.class
 )
 public class SearchResultsExpandoTemplateContextContributor
-		implements TemplateContextContributor {
+	implements TemplateContextContributor {
 
 	@Override
 	public void prepare(
-			Map<String, Object> contextObjects,
-			HttpServletRequest httpServletRequest) {
+		Map<String, Object> contextObjects,
+		HttpServletRequest httpServletRequest) {
 
-		String portletId = ParamUtil.getString(httpServletRequest, "p_p_id");
+		ThemeDisplay themeDisplay =
+			(ThemeDisplay)httpServletRequest.getAttribute(
+				WebKeys.THEME_DISPLAY);
 
-		if (!CPPortletKeys.CP_SEARCH_RESULTS.equals(portletId)) {
+		if (themeDisplay == null) {
+			return;
+		}
+
+		PortletDisplay portletDisplay = themeDisplay.getPortletDisplay();
+
+		if (!CPPortletKeys.CP_SEARCH_RESULTS.equals(
+				portletDisplay.getRootPortletId())) {
+
 			return;
 		}
 
 		contextObjects.put(
-				"expandoHelper",
-				new ExpandoHelper(_cpDefinitionLocalService));
+			"expandoHelper",
+			new ExpandoHelper(_cpDefinitionLocalService));
 	}
 
 	@Reference
@@ -49,10 +61,10 @@ public class SearchResultsExpandoTemplateContextContributor
 		public Object getAttribute(long cpDefinitionId, String attributeName) {
 			try {
 				CPDefinition cpDefinition =
-						_cpDefinitionLocalService.getCPDefinition(cpDefinitionId);
+					_cpDefinitionLocalService.getCPDefinition(cpDefinitionId);
 
 				return cpDefinition.getExpandoBridge().getAttribute(
-						attributeName);
+					attributeName);
 			}
 			catch (Exception exception) {
 				return StringPool.BLANK;

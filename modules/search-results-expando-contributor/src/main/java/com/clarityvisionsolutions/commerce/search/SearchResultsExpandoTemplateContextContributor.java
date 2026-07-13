@@ -5,7 +5,9 @@ import com.liferay.commerce.product.model.CPDefinition;
 import com.liferay.commerce.product.service.CPDefinitionLocalService;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.template.TemplateContextContributor;
-import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.theme.PortletDisplay;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.WebKeys;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -26,15 +28,16 @@ public class SearchResultsExpandoTemplateContextContributor
 		Map<String, Object> contextObjects,
 		HttpServletRequest httpServletRequest) {
 
-		String portletId = ParamUtil.getString(httpServletRequest, "p_p_id");
+		// TODO: Get ThemeDisplay from the request attributes using
+		// WebKeys.THEME_DISPLAY. Return early if it is null.
 
-		if (!CPPortletKeys.CP_SEARCH_RESULTS.equals(portletId)) {
-			return;
-		}
+		// TODO: Get PortletDisplay from ThemeDisplay and check whether the
+		// current portlet is CPPortletKeys.CP_SEARCH_RESULTS. Return early
+		// if it is not.
 
-		contextObjects.put(
-			"expandoHelper",
-			new ExpandoHelper(_cpDefinitionLocalService));
+		// TODO: Put a new ExpandoHelper into contextObjects under the key
+		// "expandoHelper", passing _cpDefinitionLocalService to its
+		// constructor.
 	}
 
 	@Reference
@@ -47,16 +50,12 @@ public class SearchResultsExpandoTemplateContextContributor
 		}
 
 		public Object getAttribute(long cpDefinitionId, String attributeName) {
-			try {
-				CPDefinition cpDefinition =
-					_cpDefinitionLocalService.getCPDefinition(cpDefinitionId);
 
-				return cpDefinition.getExpandoBridge().getAttribute(
-					attributeName);
-			}
-			catch (Exception exception) {
-				return StringPool.BLANK;
-			}
+			// TODO: Use _cpDefinitionLocalService to fetch the CPDefinition
+			// by cpDefinitionId, then return the expando bridge attribute for
+			// attributeName. Return StringPool.BLANK if an exception is thrown.
+
+			return StringPool.BLANK;
 		}
 
 		private final CPDefinitionLocalService _cpDefinitionLocalService;

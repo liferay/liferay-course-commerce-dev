@@ -26,7 +26,7 @@ const LOW_STOCK_THRESHOLD = 5;
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 /**
- * Fetches product name, SKU, and price from the Headless Commerce Admin
+ * Fetches product name, SKU, and price from the Headless Commerce Delivery
  * Catalog API and populates the corresponding DOM elements.
  *
  * The request uses the browser's session cookie for authentication — it works
@@ -36,47 +36,53 @@ const LOW_STOCK_THRESHOLD = 5;
  */
 async function loadProductData(container) {
 
-    // Step A — Resolve SKU → productId + price
-    const skuResponse = await fetch(
-        `/o/headless-commerce-admin-catalog/v1.0/skus?search=${encodeURIComponent(SKU)}&pageSize=1`,
+    // Resolve SKU → product name + price via the Delivery Catalog API.
+    // This endpoint is accessible to any authenticated portal user (no admin role required).
+    const response = await fetch(
+        `/o/headless-commerce-delivery-catalog/v1.0/channels/${CHANNEL_ID}/products` +
+        `?search=${encodeURIComponent(SKU)}&pageSize=1&nestedFields=skus`,
         { headers: { Accept: 'application/json' } }
     );
 
-    if (!skuResponse.ok) {
-        console.warn('[clarity-featured-product] SKU lookup failed:', skuResponse.status);
+    if (!response.ok) {
+        console.warn('[clarity-featured-product] Product lookup failed:', response.status);
         return;
     }
 
-    const skuData = await skuResponse.json();
-    const skuItem = skuData.items?.[0];
+    const data = await response.json();
+    const product = data.items?.[0];
 
-    if (!skuItem) {
-        console.warn('[clarity-featured-product] SKU not found:', SKU);
+    if (!product) {
+        console.warn('[clarity-featured-product] SKU not found in channel:', SKU);
         return;
     }
 
-    // Step B — Resolve productId → product name and customFields
-    const productResponse = await fetch(
-        `/o/headless-commerce-admin-catalog/v1.0/products/${skuItem.productId}`,
-        { headers: { Accept: 'application/json' } }
-    );
+    // Find the matching SKU entry to get the channel-specific price
+    const skuItem = product.skus?.find(s => s.sku === SKU);
 
-    if (!productResponse.ok) return;
-
-    const product = await productResponse.json();
-
-    // Step C — Populate the card DOM
+    // Populate the card DOM
     const nameEl  = container.querySelector('.cfp-name');
     const skuEl   = container.querySelector('.cfp-sku-value');
     const priceEl = container.querySelector('.cfp-price');
 
-    if (nameEl) nameEl.textContent = product.name?.en_US ?? SKU;
+    // Delivery Catalog returns name as a plain string (not a locale map)
+    if (nameEl) nameEl.textContent = product.name ?? SKU;
     if (skuEl)  skuEl.textContent  = SKU;
 
-    // Format the price using the shared formatPrice utility
-    if (priceEl) {
+    const imgEl = container.querySelector('.cfp-image');
+    if (imgEl && product.urlImage) {
+        // Normalize the URL: replace the API-returned origin with the current
+        // page origin to handle http/https differences in local development.
+        const imageUrl = new URL(product.urlImage);
+        imageUrl.protocol = window.location.protocol;
+        imageUrl.host = window.location.host;
+        imgEl.src = imageUrl.toString();
+        imgEl.alt = product.name ?? SKU;
+    }
+
+    if (priceEl && skuItem) {
         const { formatPrice } = await import('clarity:b2b-utils');
-        priceEl.textContent = formatPrice(skuItem.price || 0, 'USD');
+        priceEl.textContent = formatPrice(skuItem.price?.price || 0, 'USD');
     }
 }
 
@@ -101,10 +107,6 @@ async function loadProductData(container) {
     //    fetchProductInventory() is provided by the clarity-b2b-utils Import Map
     //    Entry. It calls the Headless Commerce API and returns the stock quantity
     //    as a number.
-    //
-    //    NOTE: fetchProductInventory() throws until the TODO in
-    //    client-extensions/clarity-b2b-utils/assets/b2b-utils.js is completed.
-    //    The badge will remain hidden until that implementation is done.
     try {
         const { fetchProductInventory, isLowStock } = await import('clarity:b2b-utils');
 
@@ -112,7 +114,6 @@ async function loadProductData(container) {
 
         const badge = container.querySelector('.cfp-badge--low-stock');
 
-        // ─────────────────────────────────────────────────────────────────────
         // TODO: Show the Low Stock badge when the quantity is at or below the
         //       configured threshold.
         //
@@ -125,12 +126,9 @@ async function loadProductData(container) {
         //   if (badge && isLowStock(quantity, LOW_STOCK_THRESHOLD)) {
         //       badge.classList.add('cfp-badge--visible');
         //   }
-        // ─────────────────────────────────────────────────────────────────────
 
     }
     catch (err) {
-        // Expected during the scaffold phase — fetchProductInventory() throws
-        // until b2b-utils.js Step 1–4 are implemented.
         console.info(
             '[clarity-featured-product] Inventory check pending implementation:',
             err.message

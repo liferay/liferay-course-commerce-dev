@@ -34,7 +34,7 @@ public class MinimumQuantityCOREntryTypeImpl implements COREntryType {
 	public boolean evaluate(COREntry corEntry, CommerceOrder commerceOrder)
 		throws PortalException {
 
-		<%-- TODO: Add business logic for Order Rule here --%>
+		// TODO: Add business logic for Order Rule here
 
 		return true;
 	}
@@ -107,7 +107,7 @@ public class MinimumQuantityCOREntryTypeImpl implements COREntryType {
 		List<CommerceOrderItem> commerceOrderItems =
 			commerceOrder.getCommerceOrderItems();
 
-		<%-- TODO: Loop through Order and calculate Total Quantity --%>
+		// TODO: Loop through Order and calculate Total Quantity
 
 		return orderQuantity;
 	}
