@@ -1,6 +1,6 @@
-package com.clarity.commerce.product.endpoint.service;
+package com.clarityvisionsolutions.commerce.product.endpoint.service;
 
-import com.clarity.commerce.product.endpoint.model.ProductSummary;
+import com.clarityvisionsolutions.commerce.product.endpoint.model.ProductSummary;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -110,10 +110,34 @@ public class ProductService {
 		//       .orElse(false);
 
 		// Step 3 — Return the aggregated summary.
+
+		//	 Example:
+		//		Map deliveryResponse = restClient.get()
+		//				.uri(liferayUrl + "/o/headless-commerce-delivery-catalog/v1.0/channels/"
+		//						+ channelId + "/products?search=" + sku + "&pageSize=1&nestedFields=skus")
+		//				.header(HttpHeaders.AUTHORIZATION, basicAuth())
+		//				.retrieve()
+		//				.body(Map.class);
 		//
-		//   return new ProductSummary(sku, name, price, 0, wholesaleOnly);
+		//		int stockQuantity = 0;
+		//		List<Map> products = (List<Map>) deliveryResponse.get("items");
+		//		if (products != null && !products.isEmpty()) {
+		//			List<Map> skuEntries = (List<Map>) products.get(0).get("skus");
+		//			if (skuEntries != null) {
+		//				for (Map skuEntry : skuEntries) {
+		//					if (sku.equals(skuEntry.get("sku"))) {
+		//						Map availability = (Map) skuEntry.get("availability");
+		//						if (availability != null && availability.get("stockQuantity") != null) {
+		//							stockQuantity = ((Number) availability.get("stockQuantity")).intValue();
+		//						}
+		//						break;
+		//					}
+		//				}
+		//			}
+		//		}
 		//
-		//   Note: stockQuantity is left as 0 in this exercise.
+		//   return new ProductSummary(sku, name, price, stockQuantity, wholesaleOnly);
+		//
 		//   Bonus: fetch it from the Inventory API:
 		//     GET /o/headless-commerce-admin-inventory/v1.0/skus/{sku}/warehouseItems
 		//     and sum the "quantity" field across all warehouses.

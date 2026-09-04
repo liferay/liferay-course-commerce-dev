@@ -1,4 +1,4 @@
-package com.clarity.commerce.product.endpoint.model;
+package com.clarityvisionsolutions.commerce.product.endpoint.model;
 
 /**
  * Simplified product summary returned by the B2B product endpoint.

@@ -25,9 +25,9 @@ const STORAGE_KEY = 'clarity-b2b-wishlist';
  * Students see a populated list immediately without manual data entry.
  */
 const DEMO_SKUS = [
-    'CLARITY-PRX-BLB-001',   // ProRX Digital Blue Light Blocker   — $149.99
-    'CLARITY-ELITE-TI-001',  // EliteFrame Titanium Business Glasses — $249.99
     'CLARITY-ULTRA-PHC-001', // ClarityUltra Photochromic Lenses    — $179.99
+    'CLARITY-PREMVISION-PRG-001',  // PremiumVision Anti-Fatigue Progressive — $299.99
+    'CLARITY-NANOCOAT-AR-001',   // NanoCoat Anti-Reflective Lenses    — $129.99
 ];
 
 // ── Wishlist management (localStorage) ────────────────────────────────────────
@@ -94,7 +94,7 @@ function getInventoryStatus(quantity, threshold) {
 // ── Product data ───────────────────────────────────────────────────────────────
 
 /**
- * Fetches product name and price for a SKU from the Headless Catalog API.
+ * Fetches product name and price for a SKU from the Headless Delivery Catalog API.
  * Uses the user's browser session for same-origin authentication.
  * Falls back gracefully on any error.
  *
@@ -103,32 +103,33 @@ function getInventoryStatus(quantity, threshold) {
  */
 async function fetchProductData(sku) {
     try {
-        const skuRes = await fetch(
-            `/o/headless-commerce-admin-catalog/v1.0/skus?search=${encodeURIComponent(sku)}&pageSize=1`,
+        const response = await fetch(
+            `/o/headless-commerce-delivery-catalog/v1.0/channels/${CHANNEL_ID}/products` +
+            `?search=${encodeURIComponent(sku)}&pageSize=5&nestedFields=skus`,
             { headers: { Accept: 'application/json' } }
         );
-        if (!skuRes.ok) return { sku, name: sku, price: 0 };
+        if (!response.ok) return { sku, name: sku, price: 0 };
 
-        const skuData = await skuRes.json();
-        const skuItem = skuData.items?.[0];
-        if (!skuItem) return { sku, name: sku, price: 0 };
+        const data = await response.json();
 
-        const prodRes = await fetch(
-            `/o/headless-commerce-admin-catalog/v1.0/products/${skuItem.productId}`,
-            { headers: { Accept: 'application/json' } }
-        );
-        if (!prodRes.ok) return { sku, name: sku, price: skuItem.price ?? 0 };
+        // Iterate results to find the product that contains the exact SKU variant
+        for (const product of data.items ?? []) {
+            const skuItem = product.skus?.find(s => s.sku === sku);
+            if (skuItem) {
+                return {
+                    sku,
+                    name: product.name ?? sku,
+                    price: skuItem.price?.price ?? 0,
+                };
+            }
+        }
 
-        const product = await prodRes.json();
-        return {
-            sku,
-            name: product.name?.en_US ?? sku,
-            price: skuItem.price ?? 0,
-        };
+        return { sku, name: sku, price: 0 };
     } catch {
         return { sku, name: sku, price: 0 };
     }
 }
+
 
 // ── Rendering ──────────────────────────────────────────────────────────────────
 

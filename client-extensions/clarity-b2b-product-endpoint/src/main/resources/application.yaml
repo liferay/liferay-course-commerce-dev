@@ -1,5 +1,5 @@
 server:
-  port: 58081
+  port: 58080
 
 spring:
   application:
@@ -7,6 +7,8 @@ spring:
 
 liferay:
   url: ${PORTAL_URL:http://localhost:8080}
+  channel:
+    id: ${LIFERAY_CHANNEL_ID:97521}
   admin:
     email: ${LIFERAY_ADMIN_EMAIL_ADDRESS:ian.miller@clarityvisionsolutions.com}
     password: ${LIFERAY_ADMIN_PASSWORD:learn}

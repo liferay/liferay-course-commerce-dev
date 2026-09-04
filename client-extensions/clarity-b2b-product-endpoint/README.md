@@ -6,7 +6,7 @@ Distributor Portal fragments.
 ## Endpoint
 
 ```
-GET http://localhost:58081/products/{sku}
+GET http://localhost:58080/products/{sku}
 ```
 
 **Example response** (after completing the exercise):
@@ -45,10 +45,10 @@ The executable JAR is created at `build/libs/clarity-b2b-product-endpoint-1.0.0-
   -jar build/libs/clarity-b2b-product-endpoint-1.0.0-SNAPSHOT.jar
 ```
 
-The server starts on port **58081**. Test it:
+The server starts on port **58080**. Test it:
 
 ```bash
-curl http://localhost:58081/products/CVS-STD-SV-2003
+curl http://localhost:58080/products/CVS-STD-SV-2003
 ```
 
 ## Deploy the OAuth2 Application
