@@ -1,0 +1,7 @@
+assemble:
+    -   from: static
+        into: static
+clarity-sample-global-css:
+    name: Clarity Sample Global CSS
+    type: globalCSS
+    url: static/sample.css

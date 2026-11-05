@@ -1,0 +1,44 @@
+# Challenge 4 — GraphQL queries
+# Run at: http://localhost:8080/o/graphql
+
+# ── List tickets ──────────────────────────────────────────────────────────────
+{
+  c {
+    tickets(pageSize: 10, sort: "priority:asc") {
+      items {
+        id
+        externalReferenceCode
+        subject
+        description
+        priority {
+          key
+          name
+        }
+        ticketStatus {
+          key
+          name
+        }
+      }
+      totalCount
+    }
+  }
+}
+
+# ── Filter by ticketStatus ────────────────────────────────────────────────────
+# Uncomment and replace the query above to filter open tickets only.
+#
+# {
+#   c {
+#     tickets(filter: "ticketStatus eq 'open'", pageSize: 20) {
+#       items {
+#         id
+#         subject
+#         ticketStatus {
+#           key
+#           name
+#         }
+#       }
+#       totalCount
+#     }
+#   }
+# }

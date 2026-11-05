@@ -1,0 +1,29 @@
+/* Clarity Global CSS — applied to the Tickets page */
+
+/* Page header accent */
+.tickets-page .portlet-title-text,
+.portlet-layout .portlet-title-text {
+    color: #0070c0;
+}
+
+/* Ticket card overrides for Clarity branding */
+.ticket-card {
+    border-left: 4px solid #0070c0;
+}
+
+.tab-button.active {
+    background-color: #0070c0;
+}
+
+/* Priority badge colours aligned with Clarity palette */
+.ticket-status.high {
+    background-color: #c0392b;
+}
+
+.ticket-status.medium {
+    background-color: #e67e22;
+}
+
+.ticket-status.low {
+    background-color: #27ae60;
+}

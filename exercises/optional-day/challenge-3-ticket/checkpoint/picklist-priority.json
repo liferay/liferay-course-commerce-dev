@@ -1,0 +1,21 @@
+{
+    "externalReferenceCode": "CLARITY_PRIORITY_LIST",
+    "listTypeEntries": [
+        {
+            "key": "low",
+            "name": "Low",
+            "type": ""
+        },
+        {
+            "key": "medium",
+            "name": "Medium",
+            "type": ""
+        },
+        {
+            "key": "high",
+            "name": "High",
+            "type": ""
+        }
+    ],
+    "name": "Priority"
+}
