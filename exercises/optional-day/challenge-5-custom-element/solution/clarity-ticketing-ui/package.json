@@ -9,7 +9,7 @@
 		"webpack": "5.90.1",
 		"webpack-cli": "5.1.4"
 	},
-	"name": "clarity-ticketing-ui",
+	"name": "clarity-ticketing-ui-solution",
 	"private": true,
 	"scripts": {
 		"build": "webpack"

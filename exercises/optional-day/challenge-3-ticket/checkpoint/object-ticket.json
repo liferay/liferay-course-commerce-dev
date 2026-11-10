@@ -40,52 +40,24 @@
             "type": "Clob"
         },
         {
-            "DBType": "String",
             "businessType": "Picklist",
-            "indexed": true,
-            "indexedAsKeyword": true,
-            "indexedLanguageId": null,
             "label": {
                 "en_US": "Priority"
             },
+            "listTypeDefinitionExternalReferenceCode": "CLARITY_PRIORITY_LIST",
             "name": "priority",
-            "objectFieldSettings": [
-                {
-                    "name": "listTypeDefinitionExternalReferenceCode",
-                    "value": "CLARITY_PRIORITY_LIST"
-                },
-                {
-                    "name": "state",
-                    "value": "false"
-                }
-            ],
             "required": false,
-            "system": false,
-            "type": "String"
+            "system": false
         },
         {
-            "DBType": "String",
             "businessType": "Picklist",
-            "indexed": true,
-            "indexedAsKeyword": true,
-            "indexedLanguageId": null,
             "label": {
                 "en_US": "Ticket Status"
             },
+            "listTypeDefinitionExternalReferenceCode": "CLARITY_TICKET_STATUS_LIST",
             "name": "ticketStatus",
-            "objectFieldSettings": [
-                {
-                    "name": "listTypeDefinitionExternalReferenceCode",
-                    "value": "CLARITY_TICKET_STATUS_LIST"
-                },
-                {
-                    "name": "state",
-                    "value": "false"
-                }
-            ],
             "required": false,
-            "system": false,
-            "type": "String"
+            "system": false
         }
     ],
     "pluralLabel": {

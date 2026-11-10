@@ -4,4 +4,4 @@ assemble:
 clarity-sample-global-css:
     name: Clarity Sample Global CSS
     type: globalCSS
-    url: static/sample.css
+    url: sample.css

@@ -54,7 +54,6 @@ Go to **Global Menu (⊞) > Control Panel > Objects > Add (⊕)**.
 | Plural Label | `Tickets` |
 | Object Name | `Ticket` |
 | Scope | Company |
-| Panel Link | Control Panel |
 
 ---
 
@@ -73,7 +72,22 @@ In the object definition, go to the **Fields** tab and add:
 
 ---
 
-## Step 4 — Publish the object
+## Step 4 — Configure the object
+
+Before publishing, open the **Ticket** object and go to the **Details** tab.
+
+Set the following:
+
+| Section | Field | Value |
+|---------|-------|-------|
+| Entry Display | Title Field | Subject |
+| Configuration | Panel Link | Object |
+
+Setting **Title Field** makes each ticket entry display its subject as the title in the UI. Setting **Panel Link** to **Object** places the Ticket list under **Control Panel → Object → Tickets** so you can browse entries directly.
+
+---
+
+## Step 5 — Publish the object
 
 Click **Publish** in the top right corner. Liferay will generate:
 
@@ -81,12 +95,6 @@ Click **Publish** in the top right corner. Liferay will generate:
 - GraphQL schema under `c { tickets }`
 
 Verify in the **API Explorer** (`http://localhost:8080/o/api`).
-
----
-
-## Step 5 — Set the title field
-
-In the object definition > **Details** tab, set **Title Field** to `subject` so individual ticket entries display their subject as the page title.
 
 ---
 

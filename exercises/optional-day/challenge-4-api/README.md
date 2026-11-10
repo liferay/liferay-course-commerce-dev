@@ -24,14 +24,35 @@ POST /o/c/tickets/batch
 
 Paste the contents of `import_legacy_tickets.json` into the request body and execute.
 
-Expected: **202 Accepted** with a task ID in the response.
+Expected: **202 Accepted** with a JSON body like:
+```json
+{
+  "id": 12345,
+  "executeStatus": "INITIAL",
+  "className": "com.liferay.object.rest.dto.v1_0.ObjectEntry"
+}
+```
 
-Verify the import:
+Note the `id` value — this is the import task ID.
+
+**Check the import task result:**
+```bash
+# Replace 12345 with the actual task ID from the 202 response
+curl -u "admin@clarityvisionsolutions.com:learn" \
+  "http://localhost:8080/o/headless-batch-engine/v1.0/import-task/12345" \
+  | python3 -m json.tool
+```
+
+Look for `"executeStatus": "COMPLETED"` and `"processedItemsCount": 10`. If you see `"FAILED"`, read `"errorMessage"` — a common cause is running the import before the Ticket object is published, or before the picklists exist.
+
+**Verify via API:**
 ```bash
 curl -u "admin@clarityvisionsolutions.com:learn" \
   "http://localhost:8080/o/c/tickets" | python3 -m json.tool
 # "totalCount" should be 10
 ```
+
+**Verify via UI:** go to **Global Menu (⊞) > Control Panel > Object > Tickets**. You should see 10 entries listed, each showing its **Subject**, **Priority**, and **Ticket Status**.
 
 ---
 

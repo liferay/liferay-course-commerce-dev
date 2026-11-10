@@ -9,11 +9,13 @@ function TicketsList() {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		fetch('/o/c/tickets?pageSize=20', {
-			headers: {
-				Authorization: `Bearer ${Liferay.authToken}`,
-			},
-		})
+		const headers = {};
+
+		if (typeof Liferay !== 'undefined' && Liferay.authToken) {
+			headers['X-CSRF-Token'] = Liferay.authToken;
+		}
+
+		fetch('/o/c/tickets?pageSize=20', {headers})
 			.then((res) => {
 				if (!res.ok) {
 					throw new Error(`HTTP ${res.status}`);

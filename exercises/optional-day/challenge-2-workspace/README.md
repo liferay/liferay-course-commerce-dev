@@ -50,7 +50,7 @@ cd exercises/optional-day/challenge-2-workspace/sample
 JAVA_HOME=~/.sdkman/candidates/java/21.0.10-zulu blade gw deploy
 ```
 
-After deploy, reload any page in the Clarity site and confirm the yellow banner appears at the top of the page.
+After deploy, reload any page in the Clarity site and confirm the blue banner appears at the top of the page.
 
 Inspect `sample/client-extension.yaml` to understand:
 - The `type: globalCSS` declaration.
@@ -72,15 +72,28 @@ Notice that for a `globalCSS` extension there is no Node.js step — the workspa
 
 ## Bonus — Global CSS on the Tickets page
 
-The `solution/clarity-global-css/` folder contains a Global CSS client extension with Clarity branding applied specifically to the Tickets page.
+The `solution/clarity-global-css/` folder contains a Global CSS client extension with Clarity branding that applies to all pages in the site.
 
 1. Deploy it:
    ```bash
    cd exercises/optional-day/challenge-2-workspace/solution/clarity-global-css
    JAVA_HOME=~/.sdkman/candidates/java/21.0.10-zulu blade gw deploy
    ```
-2. Navigate to the Tickets page. The page title area should use Clarity's brand colour.
-3. Add the client extension to the Tickets page via the **Page Design Options** side panel > **CSS Client Extensions**.
+   Confirm the deploy:
+   - **Console log:** look for `STARTED clarity-global-css_x.x.x` in the Liferay output.
+   - **File system:** from the workspace root: `ls bundles/osgi/client-extensions/ | grep clarity-global-css`
+2. Open the Tickets page in the Clarity Public Enterprise Website and click **Edit**.
+3. Click the **Page Design Options** panel (paint-roller icon), then under **CSS Client Extensions**, select **clarity-global-css**.
+4. Click **Publish** to apply the changes.
+5. Reload the page. You should see:
+   - A **blue top border** (`#0070c0`) along the very top of the page body.
+   - All **H1, H2, H3 headings** rendered in Clarity blue.
+
+> **Troubleshooting — styles not applied:** verify the CSS file is reachable before checking the page-level attachment. Run:
+> ```bash
+> curl -I "http://localhost:8080/o/clarity-global-css/global.css"
+> ```
+> You should get `HTTP/1.1 200`. A 404 means the `url:` field in `client-extension.yaml` does not match the path that Liferay serves the file at. When the `assemble` block uses `into: static`, Liferay strips the `static/` prefix from the served URL — so `url: static/global.css` → 404 and `url: global.css` → 200.
 
 ---
 

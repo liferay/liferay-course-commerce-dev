@@ -9,5 +9,5 @@ clarity-ticketing-ui:
     portletCategoryName: category.client-extensions
     type: customElement
     urls:
-        - static/index*.js
+        - index*.js
     useESM: true

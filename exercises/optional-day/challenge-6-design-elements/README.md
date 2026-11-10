@@ -29,20 +29,22 @@ Use the Liferay page editor to build a **Ticket submission form** and a **ticket
 5. Add a **Submit Button**.
 6. Click **Publish** and test the form as `ian.miller@clarityvisionsolutions.com`.
 
+> **Note:** Fields inside the Form Container are listed in **alphabetical order** by field name. You can reorder them by dragging within the page editor after adding them.
+
 ---
 
 ## Step 2 — Collection Display (list tickets)
 
 1. Below the Form Container, drag a **Collection Display** onto the page.
 2. In the collection configuration:
-   - **Collection**: Choose **Object Collection Provider** → Ticket.
-   - **Style display**: List.
+   - **Collection**: Click **Select Collection**, then open the **Collection Providers** tab (the second tab). Select **Tickets**.
+   - **Style display**: Choose **Table** (the default List display renders no visible content without custom fragments).
    - **Maximum number of items**: 20.
-3. Inside the Collection Display, add a **Heading** fragment mapped to the `subject` field.
-4. Add a **Text** fragment mapped to `ticketStatus`.
-5. Click **Publish**.
+3. Click **Publish**.
 
-Reload the page. The tickets you imported in Challenge 4 should appear in the collection.
+Reload the page. The tickets you imported in Challenge 4 should appear in the table with their field values.
+
+> **Tip:** If you prefer a custom layout instead of Table style, switch back to List, then add a **Heading** fragment inside the collection item and map it to the `subject` field. This gives each row a visible label.
 
 ---
 

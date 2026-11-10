@@ -18,6 +18,7 @@
 **/.web_bundle_build
 .gradle
 .idea
+/.yarnrc
 /bundles
 /gradle-*.properties
 /plugins-sdk/**/classes
