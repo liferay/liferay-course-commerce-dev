@@ -4,8 +4,7 @@
         "packages": [
             "client-extensions/clarity-theme",
             "exercises/challenge-7/exercise-4/checkout-step",
-            "exercises/optional-day/challenge-5-custom-element/starter/clarity-ticketing-ui",
-            "exercises/optional-day/challenge-5-custom-element/solution/clarity-ticketing-ui"
+            "exercises/optional-day/challenge-5-custom-element/starter/clarity-ticketing-ui"
         ]
     }
 }
