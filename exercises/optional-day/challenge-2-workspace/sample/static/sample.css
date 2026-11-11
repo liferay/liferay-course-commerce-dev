@@ -1,0 +1,10 @@
+/* Clarity Sample — deployed via Liferay Workspace */
+body::before {
+    background: #0070c0;
+    color: #fff;
+    content: "✓ Clarity Sample client extension deployed";
+    display: block;
+    font-size: 12px;
+    padding: 4px 12px;
+    text-align: center;
+}

@@ -1,7 +1,7 @@
-package com.clarity.commerce.product.endpoint.controller;
+package com.clarityvisionsolutions.commerce.product.endpoint.controller;
 
-import com.clarity.commerce.product.endpoint.model.ProductSummary;
-import com.clarity.commerce.product.endpoint.service.ProductService;
+import com.clarityvisionsolutions.commerce.product.endpoint.model.ProductSummary;
+import com.clarityvisionsolutions.commerce.product.endpoint.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +31,7 @@ public class ProductController {
 	 *
 	 * <p>Example request:
 	 * <pre>
-	 *   GET http://localhost:58081/products/CVS-STD-SV-2003
+	 *   GET http://localhost:58082/products/CVS-STD-SV-2003
 	 * </pre>
 	 *
 	 * <p>Example response (after completing the TODOs in {@link ProductService}):

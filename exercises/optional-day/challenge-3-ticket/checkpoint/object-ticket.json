@@ -1,0 +1,70 @@
+{
+    "active": true,
+    "defaultLanguageId": "en_US",
+    "enableComments": false,
+    "enableLocalization": false,
+    "enableObjectEntryHistory": false,
+    "label": {
+        "en_US": "Ticket"
+    },
+    "name": "Ticket",
+    "objectFields": [
+        {
+            "DBType": "String",
+            "businessType": "Text",
+            "indexed": true,
+            "indexedAsKeyword": false,
+            "indexedLanguageId": "en_US",
+            "label": {
+                "en_US": "Subject"
+            },
+            "name": "subject",
+            "objectFieldSettings": [],
+            "required": false,
+            "system": false,
+            "type": "String"
+        },
+        {
+            "DBType": "Clob",
+            "businessType": "LongText",
+            "indexed": false,
+            "indexedAsKeyword": false,
+            "indexedLanguageId": null,
+            "label": {
+                "en_US": "Description"
+            },
+            "name": "description",
+            "objectFieldSettings": [],
+            "required": false,
+            "system": false,
+            "type": "Clob"
+        },
+        {
+            "businessType": "Picklist",
+            "label": {
+                "en_US": "Priority"
+            },
+            "listTypeDefinitionExternalReferenceCode": "CLARITY_PRIORITY_LIST",
+            "name": "priority",
+            "required": false,
+            "system": false
+        },
+        {
+            "businessType": "Picklist",
+            "label": {
+                "en_US": "Ticket Status"
+            },
+            "listTypeDefinitionExternalReferenceCode": "CLARITY_TICKET_STATUS_LIST",
+            "name": "ticketStatus",
+            "required": false,
+            "system": false
+        }
+    ],
+    "pluralLabel": {
+        "en_US": "Tickets"
+    },
+    "scope": "company",
+    "storageType": "default",
+    "system": false,
+    "titleObjectFieldName": "subject"
+}

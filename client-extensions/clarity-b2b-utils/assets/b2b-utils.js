@@ -11,12 +11,12 @@
  * Fetches the stock quantity for a given SKU from the Headless Commerce
  * Delivery Catalog API.
  *
- * @param {string} sku - The SKU code to look up (e.g. "CVS-STD-SV-2003")
+ * @param {string} sku - The SKU code to look up (e.g. "CVS-STD-LNS-0110")
  * @param {number} channelId - The Commerce Channel ID to scope the request
  * @returns {Promise<number>} Resolves to the available stock quantity
  *
  * @example
- * const qty = await fetchProductInventory('CVS-STD-SV-2003', 101234);
+ * const qty = await fetchProductInventory('CVS-STD-LNS-0110', 97521);
  * if (isLowStock(qty, 5)) {
  *   console.log('Running low!');
  * }
@@ -29,28 +29,32 @@ export async function fetchProductInventory(sku, channelId) {
 	// Suggested endpoint (Headless Commerce Delivery Catalog):
 	//
 	//   GET /o/headless-commerce-delivery-catalog/v1.0/channels/{channelId}/products
-	//       ?skus={sku}&fields=skus
+	//       ?search={sku}&pageSize=5&nestedFields=skus
 	//
 	// Steps:
 	//   1. Build the request URL using `channelId` and `sku`.
-	//   2. Call fetch() — no Authorization header is needed for guest-accessible
-	//      channels; add one if the channel requires authentication.
-	//   3. Parse the JSON response and locate the SKU entry.
+	//   2. Call fetch() — no Authorization header is needed; the browser session
+	//      cookie is used automatically when the user is logged in.
+	//   3. Iterate the returned products to find the one containing an exact SKU
+	//      match — use pageSize=5 because the search API ranks by relevance and
+	//      the target product may not be the first result.
 	//   4. Extract and return the stock quantity from the response.
-	//      Hint: look for a field like `stockQuantity` or `availability`
-	//      within the `skus` array of the matching product.
+	//      Hint: `stockQuantity` is nested inside the `availability` object
+	//      of each SKU entry.
 	//
 	// Skeleton (adapt the response shape to what the API returns):
 	//
-	//   const url = `/o/headless-commerce-delivery-catalog/v1.0/channels/${channelId}/products?skus=${encodeURIComponent(sku)}&fields=skus`;
+	//   const url = `/o/headless-commerce-delivery-catalog/v1.0/channels/${channelId}/products?search=${encodeURIComponent(sku)}&pageSize=5&nestedFields=skus`;
 	//   const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
 	//   if (!response.ok) {
 	//       throw new Error(`Inventory request failed: ${response.status}`);
 	//   }
 	//   const data = await response.json();
-	//   const product = data.items?.[0];
-	//   const skuEntry = product?.skus?.find(s => s.sku === sku);
-	//   return skuEntry?.stockQuantity ?? 0;
+	//   for (const product of data.items ?? []) {
+	//       const skuEntry = product.skus?.find(s => s.sku === sku);
+	//       if (skuEntry) return skuEntry.availability?.stockQuantity ?? 0;
+	//   }
+	//   return 0;
 
 	throw new Error(
 		'fetchProductInventory() is not yet implemented. ' +
@@ -63,14 +67,15 @@ export async function fetchProductInventory(sku, channelId) {
  *
  * @param {number} quantity - The current available stock quantity
  * @param {number} threshold - The minimum acceptable stock level
- * @returns {boolean} True if `quantity` is at or below `threshold`
+ * @returns {boolean} True if `quantity` is positive and at or below `threshold`
  *
  * @example
  * isLowStock(3, 5);  // true
+ * isLowStock(0, 5);  // false — out of stock is not the same as low stock
  * isLowStock(10, 5); // false
  */
 export function isLowStock(quantity, threshold) {
-	return quantity <= threshold;
+	return quantity > 0 && quantity <= threshold;
 }
 
 /**

@@ -1,4 +1,4 @@
-package com.clarity.commerce.product.endpoint;
+package com.clarityvisionsolutions.commerce.product.endpoint;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
