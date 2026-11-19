@@ -1,0 +1,14 @@
+# Challenge 4 — GraphQL query
+# Open the GraphQL client at: http://localhost:8080/o/api
+# Navigate to: GraphQL → c → tickets
+
+{
+  c {
+    tickets(pageSize: 20) {
+      items {
+        subject
+      }
+      totalCount
+    }
+  }
+}

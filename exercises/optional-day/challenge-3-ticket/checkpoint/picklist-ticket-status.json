@@ -1,0 +1,21 @@
+{
+    "externalReferenceCode": "CLARITY_TICKET_STATUS_LIST",
+    "listTypeEntries": [
+        {
+            "key": "open",
+            "name": "Open",
+            "type": ""
+        },
+        {
+            "key": "inProgress",
+            "name": "In Progress",
+            "type": ""
+        },
+        {
+            "key": "closed",
+            "name": "Closed",
+            "type": ""
+        }
+    ],
+    "name": "Ticket Status"
+}
